@@ -9,6 +9,8 @@ services:
       - redis
     volumes:
       - .:/var/www/html
+    environment:
+      - APP_ENV
     expose:
       - "9000"
     entrypoint: ./config/docker/docker-entrypoint.sh
@@ -29,5 +31,7 @@ services:
       - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
     volumes:
       - "redis:/etc/redis/database/caesarapp"
+    ports:
+      - "${REDIS_PORT}:6379"
 volumes:
   redis:

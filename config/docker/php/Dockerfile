@@ -1,14 +1,17 @@
 FROM php:7.4-fpm-alpine as base
 
-USER www-data
-#RUN mkdir -p /var/www/html /var/www/html/public/static /var/www/html/var/cache /var/www/html/var/logs /var/www/html/var/sessions
-
 WORKDIR /var/www/html
 
+RUN apk --update add \
+    build-base \
+    gpgme-dev \
+    gpgme \
+    autoconf
 
+RUN pecl install gnupg redis \
+    && docker-php-ext-enable redis
 
-# Run in production mode
-
+USER www-data
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_MEMORY_LIMIT -1

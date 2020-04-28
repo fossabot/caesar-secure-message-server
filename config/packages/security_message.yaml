@@ -1,0 +1,2 @@
+security_message:
+  client: 'app.service.security_message.client'

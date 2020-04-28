@@ -25,3 +25,13 @@ services:
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
+
+  app.service.security_message.client:
+    class: App\Service\SecurityMessage\Client
+    arguments:
+      - '@snc_redis.default'
+
+  app.exception_listener.error_response:
+    class: App\Event\ErrorResponseListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.exception }

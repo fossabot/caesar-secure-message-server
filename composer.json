@@ -5,12 +5,17 @@
   "require": {
     "php": "^7.4",
     "ext-iconv": "*",
+    "ext-redis": "*",
+    "caesar/security-message-bundle": "^0.1.1",
     "sensio/framework-extra-bundle": "^5.2",
     "sensiolabs/security-checker": "^6.0",
+    "snc/redis-bundle": "^2.1",
     "symfony/console": "^4.1",
     "symfony/flex": "^1.0",
     "symfony/framework-bundle": "^4.0",
-    "symfony/yaml": "^4.1"
+    "symfony/yaml": "^4.1",
+    "jms/serializer-bundle": "^3.4",
+    "friendsofsymfony/rest-bundle": "^2.7"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.0",
@@ -57,5 +62,11 @@
       "id": "",
       "allow-contrib": false
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:caesar-team/CaesarSecureMessageBundle.git"
+    }
+  ]
 }
