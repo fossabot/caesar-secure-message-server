@@ -27,7 +27,6 @@ It is recommended to add short aliases for the following frequently used contain
 * `docker-compose exec php php` to run php in container
 * `docker-compose exec php composer` to run composer
 * `docker-compose exec php bin/console` to run Symfony CLI commands
-* `docker-compose exec db psql` to run PostgreSQL commands
 
 
 ## Checking code style and running tests

@@ -13,17 +13,10 @@ services:
       - APP_ENV
     expose:
       - "9000"
+    ports:
+      - 8080:8080
     entrypoint: ./config/docker/docker-entrypoint.sh
     user: "$UID:$UID"
-  nginx:
-    image: 4xxi/nginx:flex
-    depends_on:
-      - php
-    ports:
-      - "${SERVER_HTTP_PORT}:80"
-    volumes:
-      - .:/var/www/html
-      - ./var/log:/var/log/nginx
   redis:
     image: 'redis:5-alpine'
     environment:

@@ -7,4 +7,6 @@ else
 fi
 
 chown -R www-data var
-php-fpm
+
+vendor/bin/rr get --location bin/
+bin/rr serve --debug -vvv
