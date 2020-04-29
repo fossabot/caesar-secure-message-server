@@ -41,19 +41,19 @@ get:
   name: develop_ca
 ---
 kind: secret
-name: staging_url
+name: master_url
 get:
   path: secret/data/k8s-4xxi
   name: staging_url
 ---
 kind: secret
-name: staging_token
+name: master_token
 get:
   path: secret/data/k8s-4xxi
   name: staging_token
 ---
 kind: secret
-name: staging_ca
+name: master_ca
 get:
   path: secret/data/k8s-4xxi
   name: staging_ca
@@ -138,11 +138,11 @@ globals:
   image: sinlead/drone-kubectl
   settings:
     kubernetes_server:
-      from_secret: staging_url
+      from_secret: master_url
     kubernetes_token: 
-      from_secret: staging_token
+      from_secret: master_token
     kubernetes_cert: 
-      from_secret: staging_ca
+      from_secret: master_ca
   environment:
     CICD_GIT_COMMIT: ${DRONE_COMMIT}
     CICD_GIT_BRANCH: ${DRONE_BRANCH}
