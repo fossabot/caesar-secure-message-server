@@ -200,7 +200,6 @@ steps:
     branch: [ develop, master ]
 
 trigger:
-  branch:
-  - master
-  - develop
-  - feature/*
+  branch: [ master, develop, feature/* ]
+  event:
+    exclude: [ pull_request ]
