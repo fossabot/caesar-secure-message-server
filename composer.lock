@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "40668d34ec47cfbe4853c62d4a1f7570",
+    "content-hash": "c1332db1fb70fe384fe2ea26b014f49e",
     "packages": [
         {
             "name": "baldinof/roadrunner-bundle",
@@ -78,16 +78,16 @@
         },
         {
             "name": "caesar/security-message-bundle",
-            "version": "0.1.1",
+            "version": "0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caesar-team/CaesarSecureMessageBundle.git",
-                "reference": "94e7d754a77cbef5868104e97b280d02c97fe825"
+                "reference": "e9b7f8454a2e13f161eca0f6123d70dff9d983b1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caesar-team/CaesarSecureMessageBundle/zipball/94e7d754a77cbef5868104e97b280d02c97fe825",
-                "reference": "94e7d754a77cbef5868104e97b280d02c97fe825",
+                "url": "https://api.github.com/repos/caesar-team/CaesarSecureMessageBundle/zipball/e9b7f8454a2e13f161eca0f6123d70dff9d983b1",
+                "reference": "e9b7f8454a2e13f161eca0f6123d70dff9d983b1",
                 "shasum": ""
             },
             "require": {
@@ -138,10 +138,10 @@
             ],
             "description": "Security Message Bundle",
             "support": {
-                "source": "https://github.com/caesar-team/CaesarSecureMessageBundle/tree/0.1.1",
+                "source": "https://github.com/caesar-team/CaesarSecureMessageBundle/tree/0.1.2",
                 "issues": "https://github.com/caesar-team/CaesarSecureMessageBundle/issues"
             },
-            "time": "2020-04-27T16:07:56+00:00"
+            "time": "2020-05-06T20:11:15+00:00"
         },
         {
             "name": "dflydev/fig-cookies",
