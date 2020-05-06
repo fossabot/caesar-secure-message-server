@@ -2,9 +2,7 @@ version: '3.2'
 
 services:
   php:
-    build:
-      context: .
-      dockerfile: ./config/docker/php/Dockerfile
+    build: .
     depends_on:
       - redis
     volumes:
@@ -15,7 +13,7 @@ services:
       - "9000"
     ports:
       - 8080:8080
-    entrypoint: ./config/docker/docker-entrypoint.sh
+    entrypoint: ./docker-entrypoint.sh
     user: "$UID:$UID"
   redis:
     image: 'redis:5-alpine'

@@ -22,11 +22,20 @@ ENV COMPOSER_MEMORY_LIMIT -1
 
 COPY composer.json .
 COPY composer.lock .
-RUN composer install --prefer-dist --no-plugins --no-scripts --no-dev --optimize-autoloader
 
-COPY --chown=www-data:www-data . .
-
+# ---- Dependencies ----
+FROM base AS dependencies
+# install vendors
+USER www-data
+RUN APP_ENV=prod composer install --prefer-dist --no-plugins --no-scripts --no-dev --optimize-autoloader
+RUN mkdir bin
 RUN vendor/bin/rr get --location bin/
 
+# ---- Release ----
+FROM base AS release
+USER www-data
 
+COPY --chown=www-data:www-data . .
+COPY --chown=www-data:www-data --from=dependencies bin bin
+COPY --chown=www-data:www-data --from=dependencies /var/www/html/vendor /var/www/html/vendor
 ENTRYPOINT ["bin/rr serve", "--debug", "-vvv"]
