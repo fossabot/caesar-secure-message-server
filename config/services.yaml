@@ -35,3 +35,5 @@ services:
     class: App\Event\ErrorResponseListener
     tags:
       - { name: kernel.event_listener, event: kernel.exception }
+    arguments:
+      ['@logger']
