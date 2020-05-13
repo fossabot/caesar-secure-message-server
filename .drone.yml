@@ -148,10 +148,6 @@ steps:
   when:
     branch: [ develop ]
 
-- <<: *stepMasterDeploy
-  when:
-    branch: [ master ]
-
 - <<: *stepNotifyToSlack
   when:
     status: [ success, failure ]
