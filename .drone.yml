@@ -63,14 +63,14 @@ type: docker
 name: 4xxi
 globals:
 - &confNoSaveBuild
-  dockerfile: ./config/docker/php/Dockerfile
+  dockerfile: ./Dockerfile
   repo: plugins/docker
   tag: fourxxi
   dry_run: true
   daemon_off: false
 
 - &confSaveBuild
-  dockerfile: ./config/docker/php/Dockerfile
+  dockerfile: ./Dockerfile
   repo: 
     from_secret: repository
   tag: ${DRONE_BRANCH}
