@@ -41,24 +41,6 @@ get:
   name: develop_ca
 ---
 kind: secret
-name: master_url
-get:
-  path: secret/data/k8s-4xxi
-  name: staging_url
----
-kind: secret
-name: master_token
-get:
-  path: secret/data/k8s-4xxi
-  name: staging_token
----
-kind: secret
-name: master_ca
-get:
-  path: secret/data/k8s-4xxi
-  name: staging_ca
----
-kind: secret
 name: notifications
 get:
   path: secret/data/notifications-4xxi
@@ -125,24 +107,6 @@ globals:
       from_secret: develop_token
     kubernetes_cert:
       from_secret: develop_ca
-  environment:
-    CICD_GIT_COMMIT: ${DRONE_COMMIT}
-    CICD_GIT_BRANCH: ${DRONE_BRANCH}
-  commands:
-  - sed -i "s/\$CICD_GIT_BRANCH/$CICD_GIT_BRANCH/g" deploy/004_deployment.yml
-  - sed -i "s/\$CICD_GIT_COMMIT/$CICD_GIT_COMMIT/g" deploy/004_deployment.yml
-  - kubectl apply -f deploy/004_deployment.yml
-
-- &stepMasterDeploy
-  name: deploy staging
-  image: sinlead/drone-kubectl
-  settings:
-    kubernetes_server:
-      from_secret: master_url
-    kubernetes_token: 
-      from_secret: master_token
-    kubernetes_cert: 
-      from_secret: master_ca
   environment:
     CICD_GIT_COMMIT: ${DRONE_COMMIT}
     CICD_GIT_BRANCH: ${DRONE_BRANCH}
