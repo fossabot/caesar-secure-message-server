@@ -27,6 +27,9 @@ spec:
       - name: caesar-secure-message-server
         image: "caesarteam/caesar-secure-message-server:$CICD_GIT_BRANCH"
         imagePullPolicy: Always
+        command:
+        - bin/rr
+        - serve
         envFrom:
         - configMapRef:
             name: caesar-server-config

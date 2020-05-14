@@ -39,4 +39,3 @@ COPY --chown=www-data:www-data --from=dependencies /var/www/html/bin bin
 COPY --chown=www-data:www-data --from=dependencies /var/www/html/vendor /var/www/html/vendor
 RUN touch .env
 RUN composer require symfony/twig-bundle
-ENTRYPOINT ["bin/rr serve", "--debug", "-vvv"]
