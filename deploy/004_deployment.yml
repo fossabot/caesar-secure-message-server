@@ -43,7 +43,9 @@ spec:
         - secretRef:
             name: mailer-secret
         - configMapRef:
-            name: mailer-config        
+            name: mailer-config     
+        - secretRef:
+            name: caesar-secure-message-server-secrets   
         ports:
         - name: php-fpm
           containerPort: 9000 
