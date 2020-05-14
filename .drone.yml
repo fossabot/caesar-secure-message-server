@@ -11,18 +11,6 @@ get:
   name: password
 ---
 kind: secret
-name: repository
-get:
-  path: caesar-team/data/registry
-  name: repo-security
----
-kind: secret
-name: registry
-get:
-  path: secret/data/registry
-  name: registry
----
-kind: secret
 name: develop_url
 get:
   path: secret/data/k8s-4xxi
@@ -71,8 +59,7 @@ globals:
 
 - &confSaveBuild
   dockerfile: ./Dockerfile
-  repo: 
-    from_secret: repository
+  repo: caesarteam/caesar-secure-message-server
   tag: ${DRONE_BRANCH}
   username:
     from_secret: username
