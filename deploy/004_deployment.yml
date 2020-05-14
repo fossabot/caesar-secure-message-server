@@ -27,9 +27,6 @@ spec:
       - name: caesar-secure-message-server
         image: "caesarteam/caesar-secure-message-server:$CICD_GIT_BRANCH"
         imagePullPolicy: Always
-        command:
-        - bin/rr
-        - serve
         envFrom:
         - configMapRef:
             name: caesar-server-config
@@ -52,11 +49,39 @@ spec:
         ports:
         - name: php-fpm
           containerPort: 9000 
+        volumeMounts:
+        - mountPath: /var/www/html/public
+          name: caesar-secure-message
+      - name: nginx
+        image: "nginx:alpine"
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 0 
+        ports:
+        - name: http
+          containerPort: 80
+        volumeMounts:
+        - mountPath: /etc/nginx/nginx.conf
+          name: nginx-config-volume
+          subPath: nginx.conf
+        - mountPath: /var/www/html/public
+          name: caesar-secure-message
+      initContainers:
+      - name: copy-public
+        image: "caesarteam/caesar-secure-message-server:$CICD_GIT_BRANCH"
+        imagePullPolicy: IfNotPresent
+        command: [ "/bin/cp", "-r", "public/.", "public_site/" ]
+        volumeMounts:
+        - mountPath: /var/www/html/public_site
+          name: caesar-secure-message
       securityContext:
         runAsUser: 82
         runAsGroup: 82
         fsGroup: 82
       volumes:
+      - name: caesar-secure-message
+        persistentVolumeClaim:
+          claimName: caesar-secure-message
       - configMap:
           defaultMode: 256
           name: nginx-config
