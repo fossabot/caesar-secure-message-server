@@ -22,11 +22,11 @@ spec:
       namespace: dev-caesar-team
       labels:
         app: caesar-secure-message-server
-        CICD_GIT_COMMIT: ${CICD_GIT_COMMIT}
+        CICD_GIT_COMMIT: $CICD_GIT_COMMIT
     spec:
       containers:
       - name: caesar-secure-message-server
-        image: "caesarteam/caesar-secure-message-server:${CICD_GIT_BRANCH}"
+        image: "caesarteam/caesar-secure-message-server:$CICD_GIT_BRANCH"
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
@@ -67,7 +67,7 @@ spec:
           name: caesar-secure-message
       initContainers:
       - name: copy-public
-        image: "caesarteam/caesar-secure-message-server:${CICD_GIT_BRANCH}"
+        image: "caesarteam/caesar-secure-message-server:$CICD_GIT_BRANCH"
         imagePullPolicy: IfNotPresent
         command: [ "/bin/cp", "-r", "public/.", "public_site/" ]
         volumeMounts:
