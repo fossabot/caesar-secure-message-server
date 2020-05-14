@@ -84,6 +84,6 @@ spec:
           claimName: caesar-secure-message
       - configMap:
           defaultMode: 256
-          name: nginx-config
+          name: caesar-secure-message-server-nginx
           optional: false
         name: nginx-config-volume
