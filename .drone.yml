@@ -17,6 +17,12 @@ get:
   name: develop_url
 ---
 kind: secret
+name: COMPOSER_AUTH
+get:
+  path: caesar-team/data/github
+  name: COMPOSER_AUTH
+---
+kind: secret
 name: develop_token
 get:
   path: secret/data/k8s-4xxi
@@ -75,6 +81,9 @@ globals:
 - &stepMainBuild
   name: build
   image: plugins/docker
+  environment:
+    COMPOSER_AUTH:
+      from_secret: COMPOSER_AUTH
   settings:
     <<: *confSaveBuild
 
