@@ -27,7 +27,7 @@ class ErrorResponseListener
 
         $this->logError($exception);
 
-        $response = new JsonResponse(['message' => $exception->getMessage()], $exception->getStatusCode());
+        $response = new JsonResponse(['message' => $exception->getMessage()], $exception->getCode());
         $event->setResponse($response);
     }
 
