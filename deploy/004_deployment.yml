@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: caesar-secure-message-server
-  namespace: dev-caesar-team
+  namespace: caesar-secure-message
   labels:
     app: caesar-secure-message-server
     CICD_GIT_COMMIT: $CICD_GIT_COMMIT
@@ -18,7 +18,7 @@ spec:
     type: RollingUpdate 
   template:
     metadata:
-      namespace: dev-caesar-team
+      namespace: caesar-secure-message
       labels:
         app: caesar-secure-message-server
         CICD_GIT_COMMIT: $CICD_GIT_COMMIT
@@ -37,22 +37,12 @@ spec:
             name: caesar-server-config
         - secretRef:
             name: caesar-server-secret
-        - secretRef:
-            name: postgres-secret
-        - secretRef:
-            name: rabbitmq-secret 
-        - configMapRef:
-            name: rabbitmq-config
         - configMapRef:
             name: redis-config
         - secretRef:
-            name: mailer-secret
-        - configMapRef:
-            name: mailer-config     
-        - secretRef:
             name: caesar-secure-message-server-secrets   
         ports:
-        - name: golang
+        - name: roadrunner
           containerPort: 8080 
       securityContext:
         runAsUser: 82
